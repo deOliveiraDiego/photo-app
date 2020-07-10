@@ -1,28 +1,47 @@
-<h1>Welcome to the Photo App.</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+<% if current_user %>
+  <h3>Welcome: <%= current_user.email %></h3>
+<% else %>
+  <div class="jumbotron text-center mt-5 bg-primary text-white">
+    <h2>Welcome to the Photo Management App!</h2>
+    <p class="lead">
+      You'll love managing your Photos with our application. Sign up!
+    </p>
   </div>
-</div>
+
+  <div class="d-flex flex-row justify-content-around">
+      <div class="col-3">
+        <h2 class="text-center">Premium Plan</h2>
+        <div class="price pull-right">
+          Price: $10
+        </div>
+        <div>
+          <ul>
+            <li>Unlimited Image Uploads</li>
+            <li>Responsive design</li>
+            <li>Access anywhere</li>
+          </ul>
+        </div>
+        <p class="text-center">
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+        </p>
+      </div>
+      <div class="col-3">
+        <h2 class="text-center">Amaze Plan</h2>
+        <div class="price pull-right">
+          Price: $20
+        </div>
+        <div>
+          <ul>
+            <li>Unlimited Image Uploads</li>
+            <li>Responsive design</li>
+            <li>Access anywhere</li>
+            <li class='h4'>Unlimited projects</li>
+          </ul>
+        </div>
+        <p class="text-center">
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+        </p>
+      </div>
+  </div>
+<% end %>
+
